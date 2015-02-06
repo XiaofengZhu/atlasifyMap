@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script
+src="http://maps.googleapis.com/maps/api/js">
+</script>
+
+<script>
+var myCenter=new google.maps.LatLng(51.5077286, -0.1279688);
+
+function initialize()
+{
+var mapProp = {
+  center:myCenter,
+  zoom:16,
+  mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+
+var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+var i;
+var myLocation =[];
+var marker =[];
+var infowindow =[];
+for (i = 0; i < 9; i++) {
+    myLocation[i]=new google.maps.LatLng(51.5077286+0.003*Math.sin(40*i),-0.1279688+0.003*Math.cos(40*i));
+	marker[i]=new google.maps.Marker({
+			  position:myLocation[i],
+			  map: map,
+			  });
+	infowindow[i] = new google.maps.InfoWindow({
+				  content: 'Latitude: ' + myLocation[i].lat() + '<br>Longitude: ' + myLocation[i].lng()
+				  });
+}
+var markerCenter=new google.maps.Marker({
+  position:myCenter,
+  animation:google.maps.Animation.BOUNCE
+  });
+
+markerCenter.setMap(map);
+
+var infowindowCenter = new google.maps.InfoWindow({
+  content:"I'm the center!"
+  });
+
+google.maps.event.addListener(markerCenter, 'mouseover', function() {
+  infowindowCenter.open(map,markerCenter);
+  });
+// assuming we also want to hide the infowindow when user mouses-out
+google.maps.event.addListener(markerCenter, 'mouseout', function() {
+  infowindowCenter.close();
+});
+google.maps.event.addListener(marker[0], 'mouseover', function() {
+  infowindow[0].open(map,marker[0]);
+  });
+google.maps.event.addListener(marker[0], 'mouseout', function() {
+  infowindow[0].close();
+  });
+google.maps.event.addListener(marker[1], 'mouseover', function() {
+  infowindow[1].open(map,marker[1]);
+  });
+google.maps.event.addListener(marker[1], 'mouseout', function() {
+  infowindow[1].close();
+  });
+google.maps.event.addListener(marker[2], 'mouseover', function() {
+  infowindow[2].open(map,marker[2]);
+  });
+google.maps.event.addListener(marker[2], 'mouseout', function() {
+  infowindow[2].close();
+  });
+google.maps.event.addListener(marker[3], 'mouseover', function() {
+  infowindow[3].open(map,marker[3]);
+  });
+google.maps.event.addListener(marker[3], 'mouseout', function() {
+  infowindow[3].close();
+  });
+google.maps.event.addListener(marker[4], 'mouseover', function() {
+  infowindow[4].open(map,marker[4]);
+  });
+google.maps.event.addListener(marker[4], 'mouseout', function() {
+  infowindow[4].close();
+  });
+google.maps.event.addListener(marker[5], 'mouseover', function() {
+  infowindow[5].open(map,marker[5]);
+  });
+google.maps.event.addListener(marker[5], 'mouseout', function() {
+  infowindow[5].close();
+  });
+google.maps.event.addListener(marker[6], 'mouseover', function() {
+  infowindow[6].open(map,marker[6]);
+  });
+google.maps.event.addListener(marker[6], 'mouseout', function() {
+  infowindow[6].close();
+  });
+google.maps.event.addListener(marker[7], 'mouseover', function() {
+  infowindow[7].open(map,marker[7]);
+  });
+google.maps.event.addListener(marker[7], 'mouseout', function() {
+  infowindow[7].close();
+  });
+google.maps.event.addListener(marker[8], 'mouseover', function() {
+  infowindow[8].open(map,marker[8]);
+  });
+google.maps.event.addListener(marker[8], 'mouseout', function() {
+  infowindow[8].close();
+  });
+
+}
+
+
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+</head>
+
+<body>
+<div id="googleMap" style="width:100%;height:800px;"></div>
+</body>
+</html>
